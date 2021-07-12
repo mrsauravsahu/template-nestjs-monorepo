@@ -3,12 +3,12 @@ name: "gateway: ci"
 on:
   push:
     branches:
-      - "setup/ci"
-  # pull_request:
-    # branches:
-    #   - develop
-    # paths:
-      # - 'apps/gateway/**'
+      - develop
+  pull_request:
+    branches:
+      - develop
+    paths:
+      - 'apps/gateway/**'
 
 env:
   SERVICE_NAME: 'gateway'
@@ -65,12 +65,12 @@ jobs:
         run: docker save -o ${{ env.SERVICE_NAME }}.tar ${{ env.SERVICE_NAME }}:latest
 
       - name: upload artifact
-        # if: ${{ github.ref == env.HOT_BRANCH }}
+        if: ${{ github.ref == env.HOT_BRANCH }}
         uses: actions/upload-artifact@v1
         with:
           name: ${{ env.SERVICE_NAME }}
           path: ${{ format('{0}.tar', env.SERVICE_NAME) }}
 
       - name: tag the build
-        # if: ${{ github.ref == env.HOT_BRANCH }}
+        if: ${{ github.ref == env.HOT_BRANCH }}
         run: git tag ${{ format('apps/{0}/v{1}', env.SERVICE_NAME, steps.gitversion.outputs.MajorMinorPatch) }} && git push origin ${{ format('apps/{0}/v{1}', env.SERVICE_NAME, steps.gitversion.outputs.MajorMinorPatch) }}
