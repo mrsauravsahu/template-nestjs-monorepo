@@ -12,10 +12,11 @@ on:
 
 env:
   SERVICE_NAME: 'gateway'
+  # check if this can be derived with an expression
+  SERVICE_DIR: 'apps/gateway'
   HOT_BRANCH: 'refs/heads/cool'
   COOL_BRANCH: 'refs/heads/main'
   NODE_VERSION: "14.17.1"
-  SERVICE_DIR: ${{ format('apps/{0}', env.SERVICE_NAME) }}
 
 jobs:
   build:
