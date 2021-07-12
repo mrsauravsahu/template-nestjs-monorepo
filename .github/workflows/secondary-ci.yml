@@ -16,7 +16,7 @@ env:
   SERVICE_NAME: 'secondary'
   # check if this can be derived with an expression
   SERVICE_DIR: 'apps/secondary'
-  HOT_BRANCH: 'refs/heads/cool'
+  HOT_BRANCH: 'refs/heads/main'
   COOL_BRANCH: 'refs/heads/main'
   NODE_VERSION: "14.17.1"
 
