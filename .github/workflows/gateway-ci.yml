@@ -1,9 +1,12 @@
 name: "gateway: ci"
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
+      - "setup/ci"
+  # pull_request:
+    # branches:
+    #   - develop
     # paths:
       # - 'apps/gateway/**'
 
