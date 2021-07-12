@@ -60,7 +60,7 @@ jobs:
         run: npm run test:e2e
 
       - name: build docker image
-        run: docker build --build-arg SERVICE_NAME=${{ env.SERVICE_NAME }} -t ${{ env.SERVICE_NAME }}:latest .
+        run: docker build --build-arg SERVICE_NAME=${{ env.SERVICE_NAME }} -t ${{ env.SERVICE_NAME }}:latest -f dockerfile .
 
       - name: build docker image tar file
         run: docker save -o ${{ env.SERVICE_NAME }}.tar ${{ env.SERVICE_NAME }}:latest
