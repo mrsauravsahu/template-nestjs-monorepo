@@ -4,14 +4,13 @@ on:
   push:
     branches:
       - develop
+    paths-ignore:
+      - '!apps/gateway/**'
   pull_request:
     branches:
       - develop
-    paths:
-      - 'apps/gateway/**'
-      - '*'
-      - '.*'
-      - '.github/**'
+    paths-ignore:
+      - '!apps/gateway/**'
 
 env:
   SERVICE_NAME: 'gateway'
