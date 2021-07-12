@@ -9,6 +9,9 @@ on:
       - develop
     paths:
       - 'apps/gateway/**'
+      - '*'
+      - '.*'
+      - '.github/**'
 
 env:
   SERVICE_NAME: 'gateway'
