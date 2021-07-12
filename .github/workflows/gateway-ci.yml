@@ -3,12 +3,12 @@ name: "gateway: ci"
 on:
   push:
     branches:
-      - develop
+      - main
     paths-ignore:
       - '!apps/gateway/**'
   pull_request:
     branches:
-      - develop
+      - main
     paths-ignore:
       - '!apps/gateway/**'
 
