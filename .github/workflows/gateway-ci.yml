@@ -55,6 +55,7 @@ jobs:
         name: execute gitversion
         run: | 
             MajorMinorPatch=`${HOME}/.dotnet/tools/dotnet-gitversion ${{ format('apps/{0}/git-version.yml', env.SERVICE_NAME) }}`
+            echo "next version = $MajorMinorPatch"
             echo '::set-output name=MajorMinorPatch::$MajorMinorPatch'
 
       - name: install deps
