@@ -4,14 +4,12 @@ on:
   push:
     branches:
       - main
-    paths:
-      - '**'
+    paths-ignore:
       - '!apps/secondary/**'
   pull_request:
     branches:
       - main
-    paths:
-      - '**'
+    paths-ignore:
       - '!apps/secondary/**'
 
 env:
