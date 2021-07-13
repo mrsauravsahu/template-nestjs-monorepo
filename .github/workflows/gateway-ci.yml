@@ -47,11 +47,13 @@ jobs:
         with:
           dotnet-version: '3.1.x'
       
-      - run: dotnet tool install --global GitVersion.Tool 
+      - name: install gitversion
+        run: |
+          dotnet tool install --global GitVersion.Tool
+          echo "::set-env name=PATH::${PATH}:${HOME}/.dotnet/tools" 
         
       - id: gitversion
-        run: 
-          | 
+        run: | 
             MajorMinorPatch=`gitversion ${{ format('apps/{0}/git-version.yml', env.SERVICE_NAME) }}`
             echo '::set-output name=MajorMinorPatch::$MajorMinorPatch'
 
