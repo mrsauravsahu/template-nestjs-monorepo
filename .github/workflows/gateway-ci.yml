@@ -43,19 +43,11 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }}
 
-      - uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '3.1.x'
-      
-      - name: install gitversion
-        run: |
-          dotnet tool install --global GitVersion.Tool 
-        
       - id: gitversion
         name: execute gitversion
         run: | 
-            MajorMinorPatch=`${HOME}/.dotnet/tools/dotnet-gitversion ${{ format('apps/{0}/git-version.yml', env.SERVICE_NAME) }} | jq '.MajorMinorPatch'`
-            echo "next version = $MajorMinorPatch"
+            $MajorMinorPatch=`docker run --rm --volume $PWD:/repo gittools/gitversion /repo -output json -showvariable MajorMinorPatch`
+            echo next version = $$MajorMinorPatch
             echo '::set-output name=MajorMinorPatch::$MajorMinorPatch'
 
       - name: install deps
