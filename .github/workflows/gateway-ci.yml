@@ -47,7 +47,7 @@ jobs:
         name: execute gitversion
         run: | 
             $MajorMinorPatch=`docker run --rm --volume $PWD:/repo gittools/gitversion /repo -output json -showvariable MajorMinorPatch`
-            echo next version = $$MajorMinorPatch
+            echo next version = $MajorMinorPatch
             echo '::set-output name=MajorMinorPatch::$MajorMinorPatch'
 
       - name: install deps
