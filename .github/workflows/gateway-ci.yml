@@ -38,6 +38,8 @@ jobs:
         with:
           fetch-depth: 0
 
+      - run: echo test
+
       - name: setup node.js
         uses: actions/setup-node@v1
         with:
