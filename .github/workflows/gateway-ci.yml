@@ -6,13 +6,15 @@ on:
       - main
     paths:
       - '**'
-      - '!apps/gateway/**'
+      - '!apps/**'
+      - 'apps/gateway/**'
   pull_request:
     branches:
       - main
     paths:
       - '**'
-      - '!apps/gateway/**'
+      - '!apps/**'
+      - 'apps/gateway/**'
 
 env:
   SERVICE_NAME: 'gateway'
