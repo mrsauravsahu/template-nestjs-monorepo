@@ -6,13 +6,15 @@ on:
       - main
     paths:
       - '**'
-      - '!apps/secondary/**'
+      - '!apps/**'
+      - 'apps/secondary/**'
   pull_request:
     branches:
       - main
     paths:
       - '**'
-      - '!apps/secondary/**'
+      - '!apps/**'
+      - 'apps/secondary/**'
 
 env:
   SERVICE_NAME: 'secondary'
