@@ -65,10 +65,10 @@ jobs:
         run: npm run test:e2e
 
       - name: build docker image
-        run: docker build --build-arg SERVICE_NAME=${{ env.SERVICE_NAME }} -t ${{ env.SERVICE_NAME }}:latest -f dockerfile .
+        run: ${{ format('docker build --build-arg SERVICE_NAME={0} -t {0}:{1} -f dockerfile .', env.SERVICE_NAME, steps.gitversion.outputs.MajorMinorPatch)}}
 
       - name: build docker image tar file
-        run: docker save -o ${{ env.SERVICE_NAME }}.tar ${{ env.SERVICE_NAME }}:latest
+        run: ${{ format(' docker save -o {0}.tar {0}:{1}', env.SERVICE_NAME, steps.gitversion.outputs.MajorMinorPatch)}}
 
       - name: upload artifact
         if: ${{ github.ref == env.HOT_BRANCH }}

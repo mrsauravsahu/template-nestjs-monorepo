@@ -7,3 +7,4 @@ ignore:
   sha: []
 merge-message-formats: {}
 tag-prefix: apps/gateway/v
+next-version: 1.0
